@@ -1,0 +1,1067 @@
+<!--
+VIVAURA ZEREXION™ ADVERTORIAL TEMPLATE
+Reverse-engineered from https://www.vivaura.com/ca/zerexion/adv
+Screenshot-verified 2026-02-20
+
+Multi-section product advertorial: fake print publication masthead,
+numbered alternating feature blocks, comparison table, round-photo
+testimonial cards, dashed-border offer notice box, sticky sidebar,
+sticky bottom CTA bar.
+
+REPLO-COMPATIBLE:
+- Single root div: #vz-root (no DOCTYPE/html/head/body)
+- All CSS scoped under #vz-root
+- Google Fonts via @import in <style>
+- Absolute image URLs only
+- No semantic HTML5 sectioning elements (header/footer/article/etc.)
+
+TOKEN FORMAT: {{
+See vivaura-zerexion-advertorial-tokens.json for full schema.
+-->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,700&display=swap');
+
+/* =================================================================
+   CSS CUSTOM PROPERTIES — Brand Injection Layer
+   ================================================================= */
+#vz-root {
+    --vz-red:           #e32402;   /* CTA buttons, urgency bar, announcement bar */
+    --vz-red-dark:      #c8102e;   /* Masthead background */
+    --vz-red-tint:      #fce8e5;   /* Odd feature block background */
+    --vz-red-border:    #e8837a;   /* Dashed border on offer box */
+    --vz-green:         #00b67a;   /* Trustpilot stars, checkmarks */
+    --vz-text:          #1a1a1a;   /* Body text */
+    --vz-text-muted:    #555555;   /* Meta, breadcrumb, captions */
+    --vz-white:         #ffffff;
+    --vz-black:         #000000;   /* Footer background */
+    --vz-offer-bg:      #fffde7;   /* Offer notice box (light yellow) */
+    --vz-comp-header:   #1a1a1a;   /* Comparison table header */
+    --vz-comp-stripe:   #f5f5f5;   /* Comparison table alternating rows */
+    --vz-sidebar-border:#e0e0e0;
+    --vz-heading-font:  'Montserrat', sans-serif;
+    --vz-body-font:     'Open Sans', sans-serif;
+}
+
+/* =================================================================
+   RESET (scoped)
+   ================================================================= */
+#vz-root *, #vz-root *::before, #vz-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#vz-root {
+    font-family: var(--vz-body-font);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--vz-text);
+    background: var(--vz-white);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+#vz-root img { max-width: 100%; height: auto; display: block; }
+#vz-root a { color: var(--vz-red); text-decoration: underline; }
+#vz-root a:hover { opacity: 0.85; }
+
+/* =================================================================
+   SECTION 0: ANNOUNCEMENT BAR — countdown
+   ================================================================= */
+#vz-root .vz-bar {
+    background: var(--vz-red);
+    color: var(--vz-white);
+    text-align: center;
+    padding: 10px 20px;
+    font-family: var(--vz-heading-font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+#vz-root .vz-bar-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+#vz-root #vz-countdown {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* =================================================================
+   SECTION 1: PUBLICATION MASTHEAD
+   ================================================================= */
+#vz-root .vz-masthead {
+    background: var(--vz-red-dark);
+    padding: 12px 20px;
+    text-align: center;
+}
+#vz-root .vz-masthead-logo {
+    font-family: var(--vz-heading-font);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--vz-white);
+    font-style: italic;
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
+}
+
+/* =================================================================
+   SECTION 2: BREADCRUMB
+   ================================================================= */
+#vz-root .vz-breadcrumb {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--vz-text-muted);
+    font-family: var(--vz-body-font);
+}
+#vz-root .vz-breadcrumb a {
+    color: var(--vz-text-muted);
+    text-decoration: none;
+}
+#vz-root .vz-breadcrumb a:hover { text-decoration: underline; }
+
+/* =================================================================
+   SECTION 3: TWO-COLUMN WRAPPER
+   ================================================================= */
+#vz-root .vz-page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+#vz-root .vz-article {
+    flex: 1;
+    min-width: 0;
+}
+#vz-root .vz-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+}
+
+/* =================================================================
+   SECTION 4: H1 + EXPERT INTRO
+   ================================================================= */
+#vz-root .vz-h1 {
+    font-family: var(--vz-heading-font);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--vz-text);
+    margin: 20px 0 20px;
+}
+#vz-root .vz-expert-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin: 20px 0;
+    padding: 0;
+}
+#vz-root .vz-expert-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--vz-red-tint);
+}
+#vz-root .vz-expert-text {
+    font-size: 15px;
+    line-height: 1.6;
+}
+#vz-root .vz-expert-attribution {
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+#vz-root .vz-text-link {
+    color: var(--vz-red);
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: 14px;
+    display: inline-block;
+    margin: 8px 0 16px;
+}
+
+/* =================================================================
+   SECTION 5: SCIENCE / INTRO BODY
+   ================================================================= */
+#vz-root .vz-section { margin-bottom: 28px; }
+#vz-root .vz-h2 {
+    font-family: var(--vz-heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--vz-text);
+    margin: 24px 0 12px;
+}
+#vz-root .vz-p {
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+    color: var(--vz-text);
+}
+#vz-root .vz-p b, #vz-root .vz-p strong {
+    font-weight: 700;
+}
+#vz-root .vz-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+#vz-root .vz-bullets li {
+    font-size: 15px;
+    line-height: 1.7;
+    padding-left: 4px;
+    margin-bottom: 4px;
+}
+#vz-root .vz-bullets li::before {
+    content: '• ';
+    color: var(--vz-text);
+}
+#vz-root .vz-clinical-img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+/* =================================================================
+   SECTION 6: FEATURE BLOCKS — alternating
+   ================================================================= */
+#vz-root .vz-features { margin: 24px 0; }
+#vz-root .vz-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+/* Odd blocks: pink bg, text left, image right */
+#vz-root .vz-feature.vz-odd {
+    background: var(--vz-red-tint);
+    flex-direction: row;
+}
+/* Even blocks: white bg, image left, text right */
+#vz-root .vz-feature.vz-even {
+    background: var(--vz-white);
+    flex-direction: row-reverse;
+}
+#vz-root .vz-feature-text { flex: 1; min-width: 0; }
+#vz-root .vz-feature-img-wrap {
+    width: 220px;
+    flex-shrink: 0;
+}
+#vz-root .vz-feature-img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+#vz-root .vz-feature-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--vz-text);
+    margin-bottom: 10px;
+}
+#vz-root .vz-feature-p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--vz-text);
+    margin-bottom: 10px;
+}
+#vz-root .vz-feature-p:last-child { margin-bottom: 0; }
+
+/* =================================================================
+   SECTION 7: PRESS / AS SEEN IN BAR
+   ================================================================= */
+#vz-root .vz-press {
+    text-align: center;
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+#vz-root .vz-press-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: var(--vz-text);
+}
+#vz-root .vz-press-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 28px;
+}
+#vz-root .vz-press-logos img {
+    max-height: 36px;
+    width: auto;
+}
+
+/* =================================================================
+   SECTION 8: COMPARISON TABLE
+   ================================================================= */
+#vz-root .vz-comp-section { margin: 28px 0; }
+#vz-root .vz-comp-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--vz-text);
+    line-height: 1.4;
+}
+#vz-root .vz-comp-intro {
+    font-size: 15px;
+    margin-bottom: 16px;
+    color: var(--vz-text);
+}
+#vz-root .vz-comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 14px;
+}
+#vz-root .vz-comp-table th {
+    background: var(--vz-comp-header);
+    color: var(--vz-white);
+    font-family: var(--vz-heading-font);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 12px 14px;
+    text-align: center;
+}
+#vz-root .vz-comp-table th:first-child { text-align: left; }
+#vz-root .vz-comp-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #e8e8e8;
+    text-align: center;
+    color: var(--vz-text);
+    line-height: 1.4;
+}
+#vz-root .vz-comp-table td:first-child { text-align: left; }
+#vz-root .vz-comp-table tr:nth-child(even) td { background: var(--vz-comp-stripe); }
+#vz-root .vz-comp-table tr:last-child td { border-bottom: none; }
+#vz-root .vz-comp-check { color: var(--vz-green); font-size: 18px; }
+#vz-root .vz-comp-x { color: var(--vz-red); font-size: 18px; }
+
+/* =================================================================
+   SECTION 9: TESTIMONIAL CARDS
+   ================================================================= */
+#vz-root .vz-testimonials { margin: 28px 0; }
+#vz-root .vz-testimonials-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--vz-text);
+}
+#vz-root .vz-tcard {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--vz-red-tint);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 14px;
+}
+#vz-root .vz-tcard-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid var(--vz-white);
+}
+#vz-root .vz-tcard-body { flex: 1; }
+#vz-root .vz-tcard-quote {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--vz-text);
+    margin-bottom: 10px;
+}
+#vz-root .vz-tcard-attribution {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--vz-text);
+}
+
+/* =================================================================
+   SECTION 10: CLOSING URGENCY SECTION
+   ================================================================= */
+#vz-root .vz-urgency { margin: 28px 0; }
+#vz-root .vz-urgency-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--vz-text);
+}
+
+/* =================================================================
+   CTA BUTTON (inline + final)
+   ================================================================= */
+#vz-root .vz-cta-btn {
+    display: block;
+    width: 100%;
+    background: var(--vz-red);
+    color: var(--vz-white);
+    text-align: center;
+    padding: 16px 24px;
+    border-radius: 6px;
+    font-family: var(--vz-heading-font);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    margin: 16px 0;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+}
+#vz-root .vz-cta-btn:hover { opacity: 0.9; text-decoration: none; }
+
+/* =================================================================
+   SECTION 11: OFFER / UPDATE NOTICE BOX
+   ================================================================= */
+#vz-root .vz-offer-box {
+    border: 2px dashed var(--vz-red-border);
+    background: var(--vz-offer-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#vz-root .vz-offer-img {
+    width: 140px;
+    flex-shrink: 0;
+    border-radius: 8px;
+}
+#vz-root .vz-offer-body { flex: 1; }
+#vz-root .vz-offer-heading {
+    font-family: var(--vz-heading-font);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--vz-text);
+}
+#vz-root .vz-offer-p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: var(--vz-text);
+}
+#vz-root .vz-offer-p b { font-weight: 700; }
+#vz-root .vz-offer-note {
+    font-size: 13px;
+    color: var(--vz-text-muted);
+    margin-top: 6px;
+}
+
+/* =================================================================
+   SECTION 12: FOOTER
+   ================================================================= */
+#vz-root .vz-footer {
+    background: var(--vz-black);
+    color: #aaaaaa;
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 13px;
+    font-family: var(--vz-body-font);
+}
+#vz-root .vz-footer-links {
+    margin: 8px 0 16px;
+    font-size: 13px;
+}
+#vz-root .vz-footer-links a {
+    color: #aaaaaa;
+    text-decoration: underline;
+    margin: 0 8px;
+}
+#vz-root .vz-footer-links a:hover { color: #ffffff; }
+#vz-root .vz-footer-payments {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 12px 0 8px;
+    flex-wrap: wrap;
+}
+#vz-root .vz-footer-payments img {
+    height: 28px;
+    width: auto;
+}
+#vz-root .vz-footer-ssl {
+    font-size: 12px;
+    color: #888888;
+    margin-top: 4px;
+}
+
+/* =================================================================
+   SIDEBAR STYLES
+   ================================================================= */
+#vz-root .vz-sidebar-inner {
+    border: 1px solid var(--vz-sidebar-border);
+    border-radius: 12px;
+    padding: 18px;
+    background: var(--vz-white);
+}
+#vz-root .vz-sidebar-label {
+    font-family: var(--vz-heading-font);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: var(--vz-text);
+}
+#vz-root .vz-sidebar-tp {
+    margin-bottom: 12px;
+}
+#vz-root .vz-sidebar-tp-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--vz-text-muted);
+    margin-bottom: 6px;
+}
+#vz-root .vz-tp-stars {
+    display: flex;
+    gap: 2px;
+}
+#vz-root .vz-tp-star {
+    width: 24px;
+    height: 24px;
+    background: var(--vz-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+}
+#vz-root .vz-tp-star.vz-half {
+    background: linear-gradient(to right, var(--vz-green) 70%, #ccc 70%);
+}
+#vz-root .vz-tp-score {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vz-text);
+}
+#vz-root .vz-tp-verified {
+    display: inline-block;
+    background: var(--vz-green);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+#vz-root .vz-sidebar-product-name {
+    font-family: var(--vz-heading-font);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--vz-red);
+    text-align: center;
+    margin: 10px 0;
+}
+#vz-root .vz-sidebar-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+}
+#vz-root .vz-sidebar-bullets li {
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 5px 0;
+    color: var(--vz-text);
+    border-bottom: 1px solid #f0f0f0;
+}
+#vz-root .vz-sidebar-bullets li:last-child { border-bottom: none; }
+#vz-root .vz-sidebar-img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+#vz-root .vz-sidebar-cta {
+    display: block;
+    background: var(--vz-red);
+    color: var(--vz-white);
+    text-align: center;
+    padding: 13px 16px;
+    border-radius: 6px;
+    font-family: var(--vz-heading-font);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    margin-top: 8px;
+}
+#vz-root .vz-sidebar-cta:hover { opacity: 0.9; text-decoration: none; }
+
+/* =================================================================
+   STICKY BOTTOM BAR
+   ================================================================= */
+#vz-root #vz-sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: var(--vz-red);
+    padding: 12px 20px;
+    text-align: center;
+}
+#vz-root #vz-sticky-bar a {
+    color: var(--vz-white);
+    font-family: var(--vz-heading-font);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+#vz-root #vz-sticky-bar a:hover { opacity: 0.9; }
+
+/* =================================================================
+   MOBILE RESPONSIVE
+   ================================================================= */
+@media (max-width: 700px) {
+    #vz-root .vz-page-wrap {
+        flex-direction: column;
+        padding: 0 16px 40px;
+    }
+    #vz-root .vz-sidebar {
+        width: 100%;
+        position: static;
+        order: 2;
+    }
+    #vz-root .vz-article { order: 1; }
+    #vz-root .vz-h1 { font-size: 22px; }
+    #vz-root .vz-h2 { font-size: 17px; }
+    #vz-root .vz-feature {
+        flex-direction: column !important;
+    }
+    #vz-root .vz-feature-img-wrap {
+        width: 100%;
+    }
+    #vz-root .vz-offer-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #vz-root .vz-offer-img { width: 160px; }
+    #vz-root .vz-comp-table { font-size: 12px; }
+    #vz-root .vz-comp-table th,
+    #vz-root .vz-comp-table td { padding: 8px 8px; }
+    #vz-root .vz-masthead-logo { font-size: 22px; }
+}
+</style>
+
+<div id="vz-root">
+
+  <!-- ===== SECTION 0: ANNOUNCEMENT BAR ===== -->
+  <div class="vz-bar">
+    <div class="vz-bar-inner">
+      <span>30-DAY SALE — UP TO 35% OFF MERAKI BLU ENDS IN</span>
+      <span id="vz-countdown">00H 00M 00S</span>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1: PUBLICATION MASTHEAD ===== -->
+  <div class="vz-masthead">
+    <div class="vz-masthead-logo">The Brain Health Report</div>
+  </div>
+
+  <!-- ===== SECTION 2: BREADCRUMB ===== -->
+  <div class="vz-breadcrumb">
+    <a href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Home</a> &gt;
+    <a href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Health</a> &gt;
+    <a href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Brain & Cognitive</a> &gt;
+    Meraki Blu™
+  </div>
+
+  <!-- ===== SECTION 3+: TWO-COLUMN WRAPPER ===== -->
+  <div class="vz-page-wrap">
+
+    <!-- ============================
+         ARTICLE COLUMN
+         ============================ -->
+    <div class="vz-article">
+
+      <!-- SECTION 4: H1 + Expert Intro -->
+      <div class="vz-section">
+        <div class="vz-h1">Discover Why 114,597 Customers Are Turning to Meraki Blu™ as Their Daily Pharmaceutical-Grade Methylene Blue Protocol for Brain Fog, TBI Recovery, Cognitive Clarity, and Sustained Mental Energy.</div>
+
+        <div class="vz-expert-block">
+          <img loading="eager" class="vz-expert-avatar" src="https://hugterra.com/cdn/shop/files/2_1_optimized_100.webp?v=1746186946" alt="Dr. James Harlow">
+          <div class="vz-expert-text">
+            <div>Meraki Blu's USP pharmaceutical-grade formulation delivers methylene blue in its purest bioavailable form — directly supporting the mitochondrial electron transport chain in neurons that conventional nootropics cannot access. For those dealing with post-concussion cognitive deficits or age-related mental fatigue, the quality of the compound matters enormously. Pharmaceutical grade is not a marketing term — it's the difference between a research-grade compound and an industrial chemical.</div>
+            <div class="vz-expert-attribution">— <strong>Dr. James Harlow</strong>, Ph.D., Mitochondrial Neuroscience — 14 years of cellular energy research</div>
+          </div>
+        </div>
+
+        <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+      </div>
+
+      <!-- SECTION 5: Science / PEMF Intro -->
+      <div class="vz-section">
+        <div class="vz-h2">Leading mitochondrial researcher: the brain fog industry has been selling the wrong solution for 30 years</div>
+
+        <div class="vz-p">A landmark analysis published in the Journal of Neurotrauma found that 43% of concussion patients report significant cognitive deficits — including persistent brain fog, memory gaps, and concentration problems — more than 12 months after their initial injury. Yet the standard medical response remains: rest, time, and symptom management. For the 5.3 million Americans currently living with TBI-related cognitive impairment, "wait and see" is not a protocol.</div>
+
+        <div class="vz-p">Meraki Blu™ combines USP pharmaceutical-grade methylene blue at verified 99.9% purity with triple independent lab testing protocols — covering 14 heavy metals, microbial contamination, potency, and purity — delivering the most extensively studied cellular compound in history in the form the research actually used: pharmaceutical grade, zero fillers, zero dyes, zero oils.</div>
+
+        <div class="vz-p"><strong>Pharmaceutical-grade. Triple lab tested. Zero fillers. Built for people who can't afford to put anything less than the best into their body.</strong></div>
+
+        <div class="vz-p">An uncompromising formulation for those who have already wasted money on stimulants, nootropic stacks, and supplements that don't address the cellular root cause.</div>
+
+        <div class="vz-h2">Unlike stimulant-based nootropics that mask the problem, Meraki Blu's methylene blue works at the cellular level — directly on the mitochondrial electron transport chain where brain energy is actually produced.</div>
+
+        <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">View current offer →</a>
+
+        <div class="vz-p">Methylene blue (phenothiazinium) has been used in pharmaceutical and clinical settings for over 130 years — making it one of the most extensively researched compounds in the history of medicine, with more than 18,000 peer-reviewed studies on record. Its mechanism of action was identified decades before the modern nootropic supplement market existed. Yet most people taking methylene blue today are consuming industrial-grade or aquarium-grade material — a form of the compound that was never intended for human supplementation.</div>
+
+        <ul class="vz-bullets">
+          <li>mitochondrial electron transport chain support</li>
+          <li>neuroprotection against oxidative stress</li>
+          <li>cellular ATP (energy) production</li>
+          <li>mood and emotional balance support</li>
+        </ul>
+
+        <div class="vz-p">For the first time, this pharmaceutical-grade compound is accessible in a consumer liquid dropper format — triple lab verified, family-produced in Las Vegas, Nevada, at 99.9% purity. No industrial contamination. No fish tank chemicals. No unverified Amazon sourcing. Just the compound the researchers actually studied, at the grade they actually used.</div>
+
+        <img loading="lazy" class="vz-clinical-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/81gaLaU5uQmsqbMR/hero-section-2.png?width=1280" alt="Meraki Medicinal quality testing and pharmaceutical-grade verification">
+      </div>
+
+      <!-- SECTION 6: FEATURE BLOCKS (×8) -->
+      <div class="vz-features">
+
+        <!-- Feature 1 — odd: pink bg, text left, image right -->
+        <div class="vz-feature vz-odd">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">1. Pharmaceutical-Grade Purity — Not All Methylene Blue Is Equal</div>
+            <div class="vz-feature-p">Scroll through Amazon and you'll find dozens of methylene blue products priced between $10 and $20 a bottle. What most buyers don't discover until they dig into the certificate of analysis — if one even exists — is that the vast majority of methylene blue sold online is industrial-grade or technical-grade material. Originally manufactured for laboratory use, water treatment, or the aquarium industry.</div>
+            <div class="vz-feature-p">Meraki Blu is formulated exclusively with USP pharmaceutical-grade methylene blue — the same purity classification used in FDA-approved pharmaceutical applications. The difference isn't cosmetic. Industrial-grade methylene blue can contain measurable levels of arsenic, lead, mercury, and other heavy metals that have no business in any supplement intended for human consumption.</div>
+            <div class="vz-feature-p">The #ShowYourBlue community exists for a reason. Meraki customers know exactly what grade they're consuming, and they can verify it with a published certificate of analysis. That certainty is what a $15 Amazon listing will never provide.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/mg4gQafS58lQIVEb/not-all-blues-are-meraki.webp?width=1280" alt="Not all blues are Meraki — pharmaceutical grade vs. industrial grade comparison">
+          </div>
+        </div>
+
+        <!-- Feature 2 — even: white bg, image left, text right -->
+        <div class="vz-feature vz-even">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">2. Triple Lab Tested — 14 Heavy Metals, Microbial Contamination, Potency, Purity</div>
+            <div class="vz-feature-p">Claiming "pharmaceutical grade" costs nothing. Proving it costs considerably more — which is why most brands don't bother submitting to independent third-party verification. Meraki Blu undergoes triple independent laboratory testing on every production batch: 14 heavy metals (including lead, arsenic, mercury, and cadmium), microbial contamination screening, potency verification, and final purity confirmation.</div>
+            <div class="vz-feature-p">The result is a verified 99.9% pure product with zero harmful bacteria, zero impurities above trace levels, and a concentration you can count on: exactly 5mg per 1ml serving, 30 servings per 30ml bottle. For anyone building a cognitive health protocol around a specific daily dose, that batch-to-batch consistency matters more than most people realize.</div>
+            <div class="vz-feature-p">Meraki is also Clean Label Project Certified and Non-GMO Verified — independent certifications that go beyond what the supplement industry voluntarily requires. Because when you're making decisions about what goes into your body, "trust us" is not a quality standard.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://www.merakimedicinal.com/cdn/shop/files/M4.png?v=1763969216" alt="Meraki Medicinal quality testing and laboratory verification">
+          </div>
+        </div>
+
+        <!-- Feature 3 — odd -->
+        <div class="vz-feature vz-odd">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">3. The Mitochondrial Electron Transport Chain — What Brain Energy Actually Requires</div>
+            <div class="vz-feature-p">Brain fog, concentration problems, and mental fatigue after a concussion or with advancing age are not random. They trace back to a specific cellular mechanism: the mitochondrial electron transport chain — the biological process that converts glucose into ATP, the actual energy currency your neurons run on. When this chain is impaired — by traumatic injury, oxidative stress, or cellular aging — cognitive performance degrades. Not because something abstract is wrong with "brain chemistry." Because your brain cells are running low on the fuel they need to fire.</div>
+            <div class="vz-feature-p">Methylene blue's principal mechanism of action is acting as an electron carrier in this same chain. In peer-reviewed research by Gonzalez-Lima et al. (University of Texas at Austin, 2017) and Rojas et al. (2020), methylene blue has demonstrated the ability to support mitochondrial function in models of neuronal stress — providing an alternative electron shuttle when the primary chain is compromised by injury or age-related degradation.</div>
+            <div class="vz-feature-p">93% of Meraki customers in follow-up surveys reported compounding cellular health benefits over time — consistent with what research would predict from a compound operating at the energy-production level, not masking the deficit with a stimulant spike.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/bhy0YJuGmghYxZgb/hero-image.png?width=1280" alt="Cellular optimization — mitochondrial energy support mechanism">
+          </div>
+        </div>
+
+        <!-- Feature 4 — even -->
+        <div class="vz-feature vz-even">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">4. Neuroprotection Backed by 18,000+ Peer-Reviewed Studies</div>
+            <div class="vz-feature-p">Methylene blue is not a recent discovery. It was first synthesized in 1876 and became the first fully synthetic pharmaceutical drug approved for human use. The research base that followed spans more than 130 years and over 18,000 peer-reviewed publications examining its mechanisms across cellular biology, neuroscience, and pharmacology.</div>
+            <div class="vz-feature-p">Key neuroprotection research includes Francisco Gonzalez-Lima's work on cognitive enhancement and neuroprotection at UT Austin (2017), Oz et al.'s investigations into memory and cellular resilience (2009, 2011), and multiple independent studies on the compound's role in supporting the brain's defense against oxidative damage — the same oxidative cascade that accelerates cognitive decline following traumatic brain injury. When Meraki's founder Vance Elrod was searching for a post-concussion cognitive recovery protocol after a career-threatening head injury, 130 years of peer review is what he found.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://www.merakimedicinal.com/cdn/shop/files/M5.png?v=1763969216" alt="Research-validated formula — 18,000+ peer-reviewed studies on methylene blue">
+          </div>
+        </div>
+
+        <!-- Feature 5 — odd -->
+        <div class="vz-feature vz-odd">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">5. Zero Fillers, Zero Dyes, Zero Oils — What 99.9% Purity Actually Means</div>
+            <div class="vz-feature-p">Most liquid supplements use carrier oils, binding agents, artificial colorants, or emulsifiers to extend shelf life, improve mixability, or reduce manufacturing costs. These ingredients are classified as "inactive" on the label — but inactive does not mean inert. For anyone dealing with post-injury cognitive sensitivity, autoimmune reactivity, or simply trying to minimize unnecessary inputs into their daily protocol, every inactive ingredient is an uncontrolled variable.</div>
+            <div class="vz-feature-p">Meraki Blu contains methylene blue and pharmaceutical-grade solvent. That's it. No carrier oils. No dyes. No fillers. No inactive ingredients of any kind. The deep blue color in the bottle — and temporarily on your tongue — is the methylene blue itself, not an added colorant. The "blue tongue" has become the community's badge of honor: visible proof you're taking the real compound, at the dose you intended.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/omcSpr7TO6DGFaOw/merakiassets03-1.png?width=1280" alt="Scientifically studied results — Meraki Blu purity verification">
+          </div>
+        </div>
+
+        <!-- Feature 6 — even -->
+        <div class="vz-feature vz-even">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">6. Clean Cognitive Energy Without Stimulants, Crashes, or Dependency</div>
+            <div class="vz-feature-p">Caffeine delivers a temporary energy effect by blocking adenosine receptors — instructing the brain to stop registering fatigue. It doesn't create energy. It defers the debt, and the crash arrives in the afternoon. Prescription stimulants operate through dopaminergic and noradrenergic pathways — effective short term, but with dependency profiles and side effects that limit sustainable long-term use.</div>
+            <div class="vz-feature-p">Methylene blue operates through a fundamentally different mechanism. By supporting mitochondrial electron transport, it may help the cell produce energy more efficiently — rather than masking a deficit with stimulant chemistry. 89% of Meraki customers reported enhanced clarity and focus. 91% experienced better mood and overall wellbeing. (Based on peer-reviewed methylene blue studies and Meraki customer feedback.) These are not stimulant effects. <strong>They are what happens when cellular energy production actually functions.</strong></div>
+            <div class="vz-feature-p">Meraki Blu is taken in the morning and optionally after lunch — integrating naturally into the same daily routine as a morning coffee, without the dependency, tolerance buildup, or afternoon crash that caffeine dependency creates over time.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://www.merakimedicinal.com/cdn/shop/files/M6.png?v=1763969216" alt="Neuroprotective power — clean cognitive energy support without stimulants">
+          </div>
+        </div>
+
+        <!-- Feature 7 — odd -->
+        <div class="vz-feature vz-odd">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">7. Compounding Results — A Timeline From Day 1 to Month 3+</div>
+            <div class="vz-feature-p">Cellular health compounds don't work on a 45-minute stimulant window. The effect on mitochondrial function is cumulative — and Meraki's recommended protocol is built around that biological reality. Most customers report noticing changes faster than they expected, but the full benefit compounds over weeks and months.</div>
+            <div class="vz-feature-p"><strong>Days 1–3:</strong> Initial mental clarity improvements reported by most first-time users. Blue tongue and temporary blue urine are expected and normal — visual confirmation the compound is absorbing. <strong>Week 1–2:</strong> Noticeable energy stabilization, reduced afternoon brain fog, mood improvements. <strong>Month 1:</strong> Compounding cognitive clarity, improved focus and emotional balance. <strong>Month 3+:</strong> Long-term cellular health benefits associated with sustained mitochondrial support — the anti-aging and neuroprotective effects documented across decades of cognitive health research.</div>
+            <div class="vz-feature-p">For sustained benefit, Meraki offers subscription options at 10–20% off retail: every 4 weeks (20% off), every 6 weeks (15% off), or every 8 weeks (10% off). The 3-bottle bundle saves $16 upfront and is the most popular entry point for customers beginning a 90-day cellular health protocol.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/jkAqsXRSC8gT90bq/frame-2147211384-1.png?width=1280" alt="Meraki Blu customer results — compounding cognitive health benefits over time">
+          </div>
+        </div>
+
+        <!-- Feature 8 — even -->
+        <div class="vz-feature vz-even">
+          <div class="vz-feature-text">
+            <div class="vz-feature-heading">8. Family-Run, Made in USA, FDA-Registered — The Standard Amazon Can't Match</div>
+            <div class="vz-feature-p">Meraki Medicinal is a family-run operation based in Las Vegas, Nevada. Every bottle of Meraki Blu is produced in an FDA-registered facility. Every production batch undergoes triple independent third-party lab testing before it ships. The founder, Vance Elrod, is a former MMA competitor whose search for a post-concussion cognitive recovery protocol — after a shattered orbital and career-threatening head injury — led him to pharmaceutical-grade methylene blue and eventually to building the brand himself.</div>
+            <div class="vz-feature-p">That founding story is not marketing copy. It's the operational philosophy governing every decision: uncompromising on purity, transparent on testing, and genuinely invested in outcomes for customers who — like Vance — have already tried everything else and need something they can actually trust. The #ShowYourBlue community across Instagram, Facebook, and YouTube is the most credible endorsement available: tens of thousands of customers who chose to document their experience publicly.</div>
+            <div class="vz-feature-p">114,597 customers. 6,478 verified reviews. A 4.4/5 average rating. And a 30-day money-back guarantee — no questions asked — for every first-time order.</div>
+            <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+          </div>
+          <div class="vz-feature-img-wrap">
+            <img loading="lazy" class="vz-feature-img" src="https://cdn.instant.so/sites/8Di96XgJqhS6RwjH/assets/MyXv4q1YhcFeSewU/group-2147211204.png?width=1280" alt="Meraki Medicinal team — family-run, Las Vegas Nevada, Made in USA">
+          </div>
+        </div>
+
+      </div><!-- /.vz-features -->
+
+
+      <!-- SECTION 8: COMPARISON TABLE -->
+      <div class="vz-comp-section">
+        <div class="vz-comp-heading">The #1 choice for biohackers, athletes, and TBI survivors who need pharmaceutical certainty.</div>
+        <div class="vz-comp-intro">See how Meraki Blu™ stacks up against what's actually being sold online:</div>
+        <a class="vz-text-link" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check availability →</a>
+        <table class="vz-comp-table">
+          <thead>
+            <tr>
+              <th>Features</th>
+              <th>Meraki Blu™</th>
+              <th>Amazon / Generic</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>USP pharmaceutical-grade purity</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>Triple independent lab testing (14 heavy metals + microbes)</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>Verified 99.9% pure — zero fillers, dyes, or oils</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>Clean Label Project Certified</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>Made in FDA-registered US facility</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>30-day money-back guarantee</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+            <tr>
+              <td>Precision liquid dosing (5mg/ml)</td>
+              <td><span class="vz-comp-check">✅</span></td>
+              <td><span class="vz-comp-x">❌</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SECTION 9: TESTIMONIAL CARDS -->
+      <div class="vz-testimonials">
+        <div class="vz-testimonials-heading">Over 114,000 customers. Here's what they're saying.</div>
+
+        <div class="vz-tcard">
+          <img loading="lazy" class="vz-tcard-avatar" src="https://www.merakimedicinal.com/cdn/shop/files/XUtHPfwAf_mid.jpg?v=1762934586" alt="Thomas W.">
+          <div class="vz-tcard-body">
+            <div class="vz-tcard-quote">I am 62 years old and I have more energy than before and I can concentrate better. I was skeptical about methylene blue — I've tried CoQ10, NMN, and everything the longevity space recommends. Nothing gave me this kind of consistent mental clarity. <strong>The blue tongue is real, and honestly it's become my morning ritual.</strong> I'm on the 3-bottle subscription now.</div>
+            <div class="vz-tcard-attribution">— Thomas W., 62, Verified Buyer</div>
+          </div>
+        </div>
+
+        <div class="vz-tcard">
+          <img loading="lazy" class="vz-tcard-avatar" src="https://www.merakimedicinal.com/cdn/shop/files/5eMkCixRj_mid.jpg?v=1762934513" alt="Josh C.">
+          <div class="vz-tcard-body">
+            <div class="vz-tcard-quote">I honestly do feel much better and mentally prepared. Also, more energized and alert. I noticed the difference in the first week — <strong>the afternoon brain fog I'd been dealing with for years just wasn't there anymore.</strong> I'm on the subscription now. I genuinely can't imagine going back to whatever I was doing before.</div>
+            <div class="vz-tcard-attribution">— Josh C., Verified Buyer, subscription customer</div>
+          </div>
+        </div>
+
+        <div class="vz-tcard">
+          <img loading="lazy" class="vz-tcard-avatar" src="https://www.merakimedicinal.com/cdn/shop/files/G1dF9vvkJ_mid.jpg?v=1762934384" alt="Jared T.">
+          <div class="vz-tcard-body">
+            <div class="vz-tcard-quote">Now I take a dose of Meraki Blu in the morning and one more after lunch. I was dealing with post-concussion brain fog for over a year after a bad hit. Nothing my neurologist recommended actually touched it. <strong>This is the first thing that made a noticeable difference in my day-to-day mental clarity.</strong> I'm grateful someone finally built something worth taking.</div>
+            <div class="vz-tcard-attribution">— Jared T., Verified Buyer, TBI recovery</div>
+          </div>
+        </div>
+
+      </div><!-- /.vz-testimonials -->
+
+      <!-- SECTION 10: CLOSING URGENCY -->
+      <div class="vz-urgency">
+        <div class="vz-urgency-heading">Don't let brain fog become your baseline.</div>
+        <div class="vz-p">Set aside the industrial-grade products and stimulant-dependent nootropic stacks. Meraki Blu's USP pharmaceutical-grade formulation supports the cellular mechanism your cognitive performance actually depends on — the mitochondrial electron transport chain — without dependency, without crashes, and without the contamination risk that comes with unverified online sources.</div>
+        <div class="vz-p">Over 114,000 customers across the US have made Meraki Blu part of their daily cognitive health protocol. 89% report enhanced clarity and focus. 91% experienced better mood and overall wellbeing. Whether you're recovering from a concussion, navigating age-related cognitive decline, or simply operating at 60% of your mental capacity — the research behind this compound is 130 years deep. <strong>Your turn.</strong></div>
+        <a class="vz-cta-btn" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Claim Your 30-Day Risk-Free Trial — Meraki Blu™ →</a>
+      </div>
+
+      <!-- SECTION 11: OFFER / UPDATE NOTICE BOX -->
+      <div class="vz-offer-box">
+        <img loading="lazy" class="vz-offer-img" src="https://www.merakimedicinal.com/cdn/shop/files/M1.png?v=1763969157" alt="Meraki Blu USP Grade Methylene Blue 150mg">
+        <div class="vz-offer-body">
+          <div class="vz-offer-heading">⚠️ UPDATE: As of February 26, 2026</div>
+          <div class="vz-offer-p">Demand for Meraki Blu has increased significantly following coverage across biohacking and cognitive performance communities. The current 30-day sale pricing — including bundle discounts and subscription options — is available while stock lasts. The 3-bottle bundle (saves $16) is the most popular entry point for new customers beginning a 90-day protocol.</div>
+          <div class="vz-offer-p">Order today and get <b>UP TO 35% OFF + Free Shipping on qualifying orders.</b></div>
+          <div class="vz-offer-note">Note: This offer is exclusive to merakimedicinal.com and is not available through Amazon or third-party retailers.</div>
+        </div>
+      </div>
+
+      <!-- SECTION 12: FINAL CTA BUTTON -->
+      <a class="vz-cta-btn" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check Availability — Meraki Blu™ ➤➤</a>
+
+    </div><!-- /.vz-article -->
+
+    <!-- ============================
+         SIDEBAR COLUMN
+         ============================ -->
+    <div class="vz-sidebar">
+      <div class="vz-sidebar-inner">
+
+        <div class="vz-sidebar-label">Recommended</div>
+
+        <!-- Trustpilot block -->
+        <div class="vz-sidebar-tp">
+          <div class="vz-sidebar-tp-row">
+            <span>6,478 reviews</span>
+            <span>•</span>
+            <span>Excellent</span>
+            <span class="vz-tp-score">4.4</span>
+          </div>
+          <div class="vz-tp-stars">
+            <div class="vz-tp-star">★</div>
+            <div class="vz-tp-star">★</div>
+            <div class="vz-tp-star">★</div>
+            <div class="vz-tp-star">★</div>
+            <div class="vz-tp-star vz-half">★</div>
+          </div>
+          <div style="margin-top:6px;">
+            <span class="vz-tp-verified">✔ Verified Company</span>
+          </div>
+        </div>
+
+        <div class="vz-sidebar-product-name">Meraki Blu™</div>
+
+        <ul class="vz-sidebar-bullets">
+          <li>✅ Enhanced clarity and focus — 89% of customers</li>
+          <li>✅ Pharmaceutical-grade, triple lab tested purity</li>
+          <li>✅ Clean energy support — no crashes, no dependency</li>
+          <li>✅ 30-day money-back guarantee</li>
+        </ul>
+
+        <img loading="lazy" class="vz-sidebar-img" src="https://www.merakimedicinal.com/cdn/shop/files/M1.png?v=1763969157" alt="Meraki Blu USP Grade Methylene Blue 150mg">
+
+        <a class="vz-sidebar-cta" href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">Check Availability ➤</a>
+
+      </div>
+    </div><!-- /.vz-sidebar -->
+
+  </div><!-- /.vz-page-wrap -->
+
+  <!-- ===== SECTION 13: FOOTER ===== -->
+  <div class="vz-footer">
+    <div>©2026 Meraki Medicinal. All rights reserved.</div>
+    <div class="vz-footer-links">
+      <a href="https://www.merakimedicinal.com/policies/privacy-policy">Privacy Policy</a>
+      |
+      <a href="https://www.merakimedicinal.com/policies/terms-of-service">Terms of Use</a>
+    </div>
+    <div class="vz-footer-ssl">🔒 SSL Encrypted Payments</div>
+  </div>
+
+  <!-- ===== STICKY BOTTOM BAR ===== -->
+  <div id="vz-sticky-bar">
+    <a href="https://www.merakimedicinal.com/products/meraki-blu-usp-grade-methylene-blue-150mg?utm_source=advertorial&utm_medium=lp&utm_campaign=tbi-recovery">GET MERAKI BLU — UP TO 35% OFF ➤➤</a>
+  </div>
+
+  <script>
+  // Countdown timer
+  (function() {
+    var duration = 43200;
+    var end = Date.now() + duration * 1000;
+    function pad(n) { return n < 10 ? '0' + n : '' + n; }
+    function tick() {
+      var remaining = Math.max(0, end - Date.now());
+      var h = Math.floor(remaining / 3600000);
+      var m = Math.floor((remaining % 3600000) / 60000);
+      var s = Math.floor((remaining % 60000) / 1000);
+      var el = document.getElementById('vz-countdown');
+      if (el) el.textContent = h + 'H ' + pad(m) + 'M ' + pad(s) + 'S';
+      if (remaining > 0) setTimeout(tick, 1000);
+    }
+    tick();
+  })();
+
+  // Sticky bottom bar
+  (function() {
+    var bar = document.getElementById('vz-sticky-bar');
+    if (!bar) return;
+    window.addEventListener('scroll', function() {
+      bar.style.display = window.scrollY > 400 ? 'block' : 'none';
+    }, { passive: true });
+  })();
+  </script>
+
+</div><!-- /#vz-root -->
